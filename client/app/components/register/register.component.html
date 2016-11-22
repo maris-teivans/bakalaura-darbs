@@ -1,0 +1,37 @@
+<div *ngIf="isRegistered">
+	<p>Esat veiksmīgi reģistrējies</p>
+	<a routerLink="/login" routerLinkActive="active">Atgriezties pie autorizācijas</a>
+</div>
+
+<div *ngIf="!isRegistered">
+	<div class="row centered-form register-form">
+	    
+	    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+	    	<h2 class="form-signin-heading">Reģistrēšanās</h2>
+	    	<div class="panel panel-default">
+	 			<div class="panel-body">
+		    		<form role="form" (submit)="register($event)">
+	    				<div class="form-group">
+	                		<input type="text" [(ngModel)]="localUser.username" name="localUser.username" id="username" class="form-control input-sm" placeholder="Lietotājvārds">
+	    				</div>
+
+		    			<div class="form-group">
+		    				<input type="email" [(ngModel)]="localUser.email" name="localUser.email" id="email" class="form-control input-sm" placeholder="E-pasts">
+		    			</div>
+
+    					<div class="form-group">
+    						<input type="password" [(ngModel)]="localUser.password" name="localUser.password" id="password" class="form-control input-sm" placeholder="Parole">
+    					</div>
+
+		    			<div class="form-group">
+		    				<input type="password" [(ngModel)]="localUser.password_confirmation" name="localUser.password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Apstiprināt paroli">
+		    			</div>
+		    			<p class="msg-error" *ngIf="error">{{error}}</p>
+		    			<input type="submit" value="Reģistrēties" class="btn btn-lg btn-primary btn-block">	
+		    			<div class="back-to-login-div"><a routerLink="/login" routerLinkActive="active">Pierakstīties</a></div>
+		    		</form>
+	    		</div>
+	    	</div>		
+		</div>
+	</div>
+</div>

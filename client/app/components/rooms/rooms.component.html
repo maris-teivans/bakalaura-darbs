@@ -1,0 +1,22 @@
+<div class="room-content">	
+	<h1>Istabu saraksts</h1>
+	<hr>
+
+	<div class="task-list">
+		<div *ngIf="rooms">
+			<div *ngFor="let room of rooms" class="task-list-item">
+				<div class="col-md-6">
+					<h4>{{room.title}}</h4>
+				</div>
+				<div class="col-md-3">
+					<input [disabled]="room.isPrivate && room.ownerId !== user._id" type="button" name="enterRoom" class="btn btn-primary" (click)="enterRoom(room._id)" value="Pieslēgties istabai">
+				</div>
+				<div *ngIf="room.isPrivate" class="private-div col-md-3">
+					<b>Istaba ir privāta</b>
+				</div>
+				<br><br>
+			</div>
+		</div>
+		<div *ngIf="!rooms">Iegūst sarakstu...</div>		
+	</div>
+</div>

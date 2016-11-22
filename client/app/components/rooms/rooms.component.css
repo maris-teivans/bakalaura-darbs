@@ -1,0 +1,27 @@
+.task-list-item {
+	padding-top: 6px;
+	cursor: pointer;
+}
+
+.task-list-item:hover {
+	/*background-color: #f5f5f5;*/
+	background-color: #E0EEE0;
+}
+
+.task-checkbox {
+	cursor: pointer;
+}
+
+.room-content {
+	margin-top: 10%;
+}
+
+.btn {
+	border-radius: 0px;
+}
+
+.private-div {
+	margin-top: 6px;
+	border: 1px solid grey;
+	width: 14%;
+}

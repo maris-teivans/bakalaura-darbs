@@ -1,0 +1,51 @@
+.chat-content {
+	margin-top: 10%;
+}
+
+.panel {
+	border-radius: 0px;
+}
+
+.input-group {
+	width: 100%;
+}
+
+.form-control {
+	border-radius: 0px;
+}
+
+.btn {
+	border-radius: 0px;
+}
+
+.message-bubble 
+{
+    padding: 5px 0px 5px 0px;
+}
+
+.message-bubble:nth-child(even) {
+	background-color: #E0EEE0;
+}
+
+.message-bubble > *
+{
+    padding-left: 10px;    
+}
+
+.panel-body { padding: 0px; }
+
+.panel-heading { background-color: #3d6da7 !important; color: white !important; }
+
+.input-group-btn {
+	border-radius: 0px;
+}
+
+.container {
+	width: inherit;
+	height: 50%;
+    overflow: auto;
+}
+
+.text-muted {
+	margin-bottom: 2px;
+}

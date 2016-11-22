@@ -1,0 +1,21 @@
+<div class="room-content">
+  <h1>Jauna istaba</h1>
+  <hr>
+
+  <div class="room-form">
+    <form (submit)="saveRoom($event)">
+      <div class="form-group">
+        <label for="roomTitle">Istabas nosaukums</label>
+        <input type="text" [(ngModel)]="room.title" name="room.title" class="form-control" id="roomTitle" aria-describedby="titleHelp" placeholder="Ievadiet nosaukumu">
+        <small id="titleHelp" class="form-text text-muted">Ievadiet istabas nosaukumu, kas raksturos saturu, par ko šajā istabā lietotāji runās.</small>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" id="isPrivate" [(ngModel)]="room.isPrivate" name="room.isPrivate">
+          Istaba ir privāta
+        </label>
+      </div>
+      <input type="submit" value="Izveidot istabu" class="btn btn-primary">
+    </form>
+  </div>
+</div>

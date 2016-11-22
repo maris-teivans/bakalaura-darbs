@@ -1,0 +1,15 @@
+.register-form {
+	padding-top: 10%;
+    margin: 0 auto;
+}
+
+.back-to-login-div {
+	float:left;
+	font-size: 80%;
+	position: relative;
+	top: 5px;
+	font-size: 14px;
+}
+.msg-error {
+	color: red;
+}

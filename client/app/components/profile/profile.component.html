@@ -1,0 +1,36 @@
+<div class="profile-content">
+	<h1>Lietotāja '{{user.username}}' profils</h1>
+	<hr>
+	
+	<div *ngIf="user.email == ''">
+		Iegūst lietotāja informāciju...
+	</div>	
+		
+	<div *ngIf="user.email !== ''" class="container">
+		<div class="col-md-2 vert-centr-1"><span class="field-label">Lietotājvārds: </span></div><div class="col-md-3 vert-centr">{{user.username}}</div><div class="col-md-7"><button class="btn">Redīģēt</button></div><br><br>
+		<div class="col-md-2 vert-centr-1"><span class="field-label">E-pasts: </span></div><div class="col-md-3 vert-centr">{{user.email}}</div><div class="col-md-7"><button class="btn">Redīģēt</button></div><br><br>
+		<div class="col-md-2"><button class="btn">Mainīt paroli</button></div>
+	</div>
+	<br><br>
+	
+	<h1>Lietotāja izveidoto istabu saraksts</h1>
+	<hr>
+
+	<div class="task-list">
+		<div *ngIf="rooms">
+			<div *ngFor="let room of rooms" class="task-list-item">
+				<div class="col-md-6">
+					<h4>{{room.title}}</h4>
+				</div>
+				<div class="col-md-3">
+					<input type="button" name="enterRoom" class="btn btn-primary" (click)="enterRoom(room._id)" value="Pieslēgties istabai">
+				</div>
+				<div *ngIf="room.isPrivate" class="private-div col-md-3">
+					<b>Istaba ir privāta</b>
+				</div>
+				<br><br>
+			</div>
+		</div>
+		<div *ngIf="!rooms">Iegūst sarakstu...</div>
+	</div>
+</div>

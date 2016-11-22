@@ -1,0 +1,16 @@
+.room-content {
+	margin-top: 10%;
+}
+
+.room-form {
+	border: solid #f7f7f9;
+	padding: 2.5rem;
+}
+
+.form-control {
+	border-radius: 0px;
+}
+
+.btn {
+	border-radius: 0px;
+}

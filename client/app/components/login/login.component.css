@@ -1,0 +1,35 @@
+.form-signin {
+	padding-top: 10%;
+	width: 25%;
+    margin: 0 auto;
+}
+
+.form-signin input[type="username"] {
+	border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.register-div {
+	float:left;
+	font-size: 80%;
+	position: relative;
+	top: 10px;
+	font-size: 14px;
+}
+
+.forget-div {
+	float:right;
+	font-size: 80%;
+	position: relative;
+	top: 10px;
+	font-size: 14px;
+}
+
+.msg-error {
+	color: red;
+}

@@ -1,0 +1,40 @@
+<div class="chat-content" >
+	<div *ngIf="room">
+		<h1>{{room.title}}</h1>
+		<hr>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="container" id="chatBox">
+					<div class="row message-bubble" *ngFor="let msg of conversation">          	
+						<div *ngIf="!isNewUserAlert(msg)">
+		                	<p class="text-muted">{{msg.userName}}</p>
+		                    <span>{{msg.text}}</span>
+		                </div>
+		                <div *ngIf="isNewUserAlert(msg)">
+		                	<p class="text-muted">{{msg.text}}</p>
+		                </div>
+		                {{updateScroll()}}
+	                </div>       
+			    </div>
+			    <div class="panel-footer">
+					<div class="input-group">
+			        	<input id="country" type="text" class="form-control" [(ngModel)]="message" (keypress)="keypressHandler($event)">
+			        	<span class="input-group-btn">
+			        		<button (click)="send()" type="submit" class="btn btn-primary" name="action">Sūtīt ziņu</button>
+			        	</span>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h4 *ngIf="!room">Iegūst istabas datus...</h4>
+
+	<p>Lietotāju saraksts</p>
+	<div *ngFor="let user of userList">
+		<div class="col-md-3">
+			<h4>{{user}}</h4>
+		</div>
+		<br><br>
+	</div>
+</div>
