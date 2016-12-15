@@ -1,15 +1,27 @@
 <div class="profile-content">
 	<h1>Lietotāja '{{user.username}}' profils</h1>
 	<hr>
-	
-	<div *ngIf="user.email == ''">
-		Iegūst lietotāja informāciju...
-	</div>	
 		
-	<div *ngIf="user.email !== ''" class="container">
-		<div class="col-md-2 vert-centr-1"><span class="field-label">Lietotājvārds: </span></div><div class="col-md-3 vert-centr">{{user.username}}</div><div class="col-md-7"><button class="btn">Redīģēt</button></div><br><br>
-		<div class="col-md-2 vert-centr-1"><span class="field-label">E-pasts: </span></div><div class="col-md-3 vert-centr">{{user.email}}</div><div class="col-md-7"><button class="btn">Redīģēt</button></div><br><br>
-		<div class="col-md-2"><button class="btn">Mainīt paroli</button></div>
+	<div class="container">
+		<div class="col-md-2 vert-centr-1"><span class="field-label">Lietotājvārds: </span></div>
+		<div *ngIf="!editName" class="col-md-3 vert-centr">{{user.username}}</div>
+		<div *ngIf="editName" class="col-md-3 vert-centr"><input type="text" [(ngModel)]="user.username" name="user.username"/></div>		
+		<div class="col-md-7">
+			<div *ngIf="!editName"><button class="btn btn-h" (click)="editName = true">Redīģēt</button></div>
+			<div *ngIf="editName"><button class="btn btn-h" (click)="updateUsername()">Saglabāt</button> <button class="btn btn-h" (click)="cancelNameUpdate()">Atcelt</button></div>
+		</div><br><br>
+		<p class="msg-error">{{errName}}</p>
+
+		<div class="col-md-2 vert-centr-1"><span class="field-label">E-pasts: </span></div>
+		<div *ngIf="!editEmail" class="col-md-3 vert-centr">{{user.email}}</div>
+		<div *ngIf="editEmail" class="col-md-3 vert-centr"><input type="text" [(ngModel)]="user.email" name="user.email"/></div>
+		<div class="col-md-7">
+			<div *ngIf="!editEmail"><button class="btn btn-h" (click)="editEmail = true">Redīģēt</button></div>
+			<div *ngIf="editEmail"><button class="btn btn-h" (click)="updateEmail()">Saglabāt</button> <button class="btn btn-h" (click)="cancelEmailUpdate()">Atcelt</button></div>
+		</div><br><br>
+		<p class="msg-error">{{errEmail}}</p>
+
+		<div class="col-md-2"><button class="btn btn-h">Mainīt paroli</button></div>
 	</div>
 	<br><br>
 	

@@ -33,7 +33,7 @@ var routes = [
         children: [
             { path: '', redirectTo: 'rooms', pathMatch: 'full' },
             { path: 'rooms', component: rooms_component_1.RoomsComponent },
-            { path: 'profile/:username', component: profile_component_1.ProfileComponent },
+            { path: 'profile/:username', component: profile_component_1.ProfileComponent, resolve: { usernames: account_resolver_1.AccountResolver } },
             { path: 'profile', redirectTo: 'rooms' },
             { path: 'room', component: room_component_1.RoomComponent },
             { path: 'room/:id', component: room_component_1.RoomComponent },

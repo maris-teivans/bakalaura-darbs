@@ -21,6 +21,9 @@ var AuthService = (function () {
     AuthService.prototype.getUser = function () {
         return this.user;
     };
+    AuthService.prototype.setUser = function (user) {
+        this.user = user;
+    };
     AuthService.prototype.setLoggedIn = function (user) {
         this.loggedIn = true;
         this.user = user;
@@ -66,6 +69,9 @@ var AuthService = (function () {
     };
     AuthService.prototype.getUsernames = function () {
         return this.http.get('/api/accounts');
+    };
+    AuthService.prototype.updateUser = function (user) {
+        return this.http.put('/api/user/' + user._id, user).toPromise();
     };
     AuthService = __decorate([
         core_1.Injectable(), 

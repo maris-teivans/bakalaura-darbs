@@ -30,11 +30,11 @@
 	margin-top: 6px;
 }
 
-.btn {
+.btn-h {
 
 }
 
-.btn:hover {
+.btn-h:hover {
 	background-color: #E0EEE0;
 }
 
@@ -50,4 +50,8 @@
 	margin-top: 6px;
 	border: 1px solid grey;
 	width: 13%;
+}
+
+.msg-error {
+	color: red;
 }

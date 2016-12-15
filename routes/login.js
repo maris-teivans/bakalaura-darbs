@@ -43,6 +43,23 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
+router.put('/user/:id', function(req, res, next){
+  //var oldTask = req.body;
+  var updUser = req.body;
+
+  if (!updUser) {
+    res.status(400);
+    res.json({"error":"bad data"});
+  } else {
+    Account.findOneAndUpdate({_id: req.params.id}, updUser, {upsert:true, new:true}, function(err, user){
+      if (err) {
+        res.send(err);
+      }
+      res.json(user);
+    });
+  } 
+});
+
 router.get('/status', function(req, res) {
   if (!req.isAuthenticated()) {
     return res.status(200).json({

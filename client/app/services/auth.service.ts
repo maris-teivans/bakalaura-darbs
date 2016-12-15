@@ -19,6 +19,10 @@ export class AuthService {
 		return this.user;
 	}
 
+	setUser(user) {
+		this.user = user;
+	}
+
 	setLoggedIn(user) {
 		this.loggedIn = true;
 		this.user = user;
@@ -66,5 +70,9 @@ export class AuthService {
 
 	getUsernames() {
 		return this.http.get('/api/accounts');
+	}
+
+	updateUser(user): Promise<Response> {
+		return this.http.put('/api/user/' + user._id, user).toPromise();
 	}
 }

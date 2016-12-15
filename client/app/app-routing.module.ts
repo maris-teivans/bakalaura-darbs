@@ -28,7 +28,7 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'rooms', pathMatch: 'full' },
       		{ path: 'rooms', component: RoomsComponent },
-      		{ path: 'profile/:username', component: ProfileComponent },
+      		{ path: 'profile/:username', component: ProfileComponent, resolve: { usernames: AccountResolver} },
       		{ path: 'profile', redirectTo: 'rooms' },
       		{ path: 'room', component: RoomComponent },
       		{ path: 'room/:id', component: RoomComponent },
