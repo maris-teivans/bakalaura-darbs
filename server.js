@@ -20,7 +20,7 @@ var db = require('./config/db');
 mongoose.Promise = global.Promise;
 mongoose.connect(db.url); 
 
-var port = 3000;
+var port = 8080;
 
 //View Engine
 app.set('views', path.join(__dirname, 'views'));
