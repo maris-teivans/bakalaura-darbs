@@ -42,8 +42,9 @@ app.use(passport.session());
 
 //Set static folder
 app.use(express.static(path.join(__dirname, 'client')));
+console.log(path.join(__dirname, 'client'));
 
-app.use(favicon(__dirname + '/favicon.ico'));
+app.use(favicon(__dirname + '/client/images/favicon.ico'));
 
 app.use('/api', login);
 app.use('/api', rooms);
