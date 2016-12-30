@@ -8,13 +8,13 @@ var cookieParser  = require('cookie-parser');
 var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-var app   = express();
+var app    = express();
+/*var http   = require('http');
+var server = http.createServer(app);*/
+
 var index = require('./routes/index');
 var rooms = require('./routes/rooms');
 var login = require('./routes/login');
-
-var socketServer = require('./socket');
-socketServer.start();
 
 var db = require('./config/db');
 mongoose.Promise = global.Promise;
@@ -42,7 +42,6 @@ app.use(passport.session());
 
 //Set static folder
 app.use(express.static(path.join(__dirname, 'client')));
-console.log(path.join(__dirname, 'client'));
 
 app.use(favicon(__dirname + '/client/images/favicon.ico'));
 
@@ -84,6 +83,12 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(port, function(){
-	console.log('Server started on ' + port);
+/*app.listen(process.env.PORT, process.env.IP, function(){
+	console.log('Server started on ' + process.env.PORT + ' port, ' + process.env.IP + ' IP...');
+});*/
+var server = app.listen(process.env.PORT, process.env.IP, function(){
+	console.log('Server started on ' + process.env.PORT + ' port, ' + process.env.IP + ' IP...');
 });
+var io     = require('socket.io').listen(server);
+var socketServer = require('./socket');
+socketServer.start(io);

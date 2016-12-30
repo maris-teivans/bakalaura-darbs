@@ -35,9 +35,9 @@ export class RoomsComponent implements OnInit {
 			}
 		});
 	}
-
+	
     enterRoom(id) {
-        this.socket = io('http://localhost:8000');
+        this.socket = io('https://' + process.env.IP + ':' + process.env.PORT);
         this.router.navigate(['home/chat/'+id]);
         this.socket.emit('newUser', {'username': this.user.username, 'roomId': id});
     }

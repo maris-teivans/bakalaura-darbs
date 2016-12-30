@@ -38,10 +38,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 				if(res) {
 					this.room = res;
 				}
-			})
+			});
 		}
 
-		this.socket = io('http://localhost:8000');
+		this.socket = io('https://' + process.env.IP + ':' + process.env.PORT);
         this.socket.on('chatUpdate', function(data) {
             if(data.roomId === this.room._id) {
             	this.conversation.push(data);
