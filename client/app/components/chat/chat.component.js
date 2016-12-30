@@ -39,7 +39,7 @@ var ChatComponent = (function () {
                 }
             });
         }
-        this.socket = io('https://' + process.env.IP + ':' + process.env.PORT);
+        this.socket = io('http://localhost:8000');
         this.socket.on('chatUpdate', function (data) {
             if (data.roomId === this.room._id) {
                 this.conversation.push(data);
