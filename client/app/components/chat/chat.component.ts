@@ -38,7 +38,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 				if(res) {
 					this.room = res;
 				}
-			});
+			})
 		}
 
 		this.socket = io('https://' + process.env.IP + ':' + process.env.PORT);
