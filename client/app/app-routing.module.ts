@@ -30,7 +30,7 @@ const routes: Routes = [
       		{ path: 'rooms', component: RoomsComponent },
       		{ path: 'profile/:username', component: ProfileComponent, resolve: { usernames: AccountResolver} },
       		{ path: 'profile', redirectTo: 'rooms' },
-      		{ path: 'room', component: RoomComponent },
+      		{ path: 'room', component: RoomComponent, resolve: { usernames: AccountResolver} },
       		{ path: 'room/:id', component: RoomComponent },
       		{ path: 'roomSuccess/:isNew', component: RoomSuccessComponent },
       		{ path: 'chat/:id', component: ChatComponent }

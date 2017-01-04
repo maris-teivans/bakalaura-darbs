@@ -35,7 +35,7 @@ var routes = [
             { path: 'rooms', component: rooms_component_1.RoomsComponent },
             { path: 'profile/:username', component: profile_component_1.ProfileComponent, resolve: { usernames: account_resolver_1.AccountResolver } },
             { path: 'profile', redirectTo: 'rooms' },
-            { path: 'room', component: room_component_1.RoomComponent },
+            { path: 'room', component: room_component_1.RoomComponent, resolve: { usernames: account_resolver_1.AccountResolver } },
             { path: 'room/:id', component: room_component_1.RoomComponent },
             { path: 'roomSuccess/:isNew', component: roomSuccess_component_1.RoomSuccessComponent },
             { path: 'chat/:id', component: chat_component_1.ChatComponent }

@@ -16,9 +16,9 @@ var chat = {
 			});
 			socket.on('newUser', function (data) {
 				socket.emit('chatUpdate',
-					{'userName':'','text':data.username+' has entered the room','roomId':data.roomId, 'usrN':data.username});
+					{'userName':'','text':data.username+' ir ienācis istabā','roomId':data.roomId, 'usrN':data.username});
 				socket.broadcast.emit('chatUpdate',
-					{'userName':'','text':data.username+' has entered the room','roomId':data.roomId, 'usrN':data.username});
+					{'userName':'','text':data.username+' ir ienācis istabā','roomId':data.roomId, 'usrN':data.username});
 			});
 			socket.on('userLeft', function (data) {
 				socket.emit('chatUpdate',data);

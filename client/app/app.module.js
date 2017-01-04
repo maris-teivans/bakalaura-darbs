@@ -27,12 +27,14 @@ var auth_service_1 = require('./services/auth.service');
 var account_resolver_1 = require('./resolvers/account.resolver');
 var room_resolver_1 = require('./resolvers/room.resolver');
 var auth_guard_service_1 = require('./services/auth-guard.service');
+var angular2_tag_input_1 = require('angular2-tag-input');
+//import { RlTagInputModule } from '../node_modules/angular2-tag-input/index';
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule, http_1.JsonpModule],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule, http_1.JsonpModule, angular2_tag_input_1.RlTagInputModule],
             declarations: [app_component_1.AppComponent, rooms_component_1.RoomsComponent, login_component_1.LoginComponent, register_component_1.RegisterComponent, home_component_1.HomeComponent, profile_component_1.ProfileComponent, room_component_1.RoomComponent, roomSuccess_component_1.RoomSuccessComponent, chat_component_1.ChatComponent],
             providers: [room_service_1.RoomService, auth_service_1.AuthService, auth_guard_service_1.AuthGuard, account_resolver_1.AccountResolver, room_resolver_1.RoomResolver],
             bootstrap: [app_component_1.AppComponent]

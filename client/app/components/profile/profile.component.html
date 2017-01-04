@@ -34,10 +34,13 @@
 				<div class="col-md-6">
 					<h4>{{room.title}}</h4>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<input type="button" name="enterRoom" class="btn btn-primary" (click)="enterRoom(room._id)" value="Pieslēgties istabai">
 				</div>
-				<div *ngIf="room.isPrivate" class="private-div col-md-3">
+				<div class="col-md-2">
+					<input type="button" name="deleteRoom" class="btn btn-danger" (click)="deleteRoom(room._id)" value="Dzēst">
+				</div>
+				<div *ngIf="room.isPrivate" class="private-div col-md-2">
 					<b>Istaba ir privāta</b>
 				</div>
 				<br><br>

@@ -43,21 +43,19 @@ var ProfileComponent = (function () {
         this.router.navigate(['home/chat/' + id]);
         this.socket.emit('newUser', { 'username': this.user.username, 'roomId': id });
     };
-    /*deleteRoom(id) {
-        var rooms = this.rooms;
-
-        this.roomService.deleteRoom(id).then((response:Response) => {
-            let data = response.json();
-
-            if (data.n == 1) {
-                for (var i = 0; i < rooms.length; i++) {
-                    if (rooms[i]._id == id) {
-                        rooms.splice(i, 1);
+    ProfileComponent.prototype.deleteRoom = function (id) {
+        var _this = this;
+        this.roomService.deleteRoom(id).then(function (response) {
+            var res = response.json();
+            if (res) {
+                for (var i = 0; i < _this.rooms.length; i++) {
+                    if (_this.rooms[i]._id == id) {
+                        _this.rooms.splice(i, 1);
                     }
                 }
             }
-        })
-    }*/
+        });
+    };
     ProfileComponent.prototype.updateUsername = function () {
         var _this = this;
         if (this.user.username === this.oldUsername) {

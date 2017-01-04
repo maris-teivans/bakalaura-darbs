@@ -23,8 +23,11 @@ import { RoomResolver }	   from './resolvers/room.resolver';
 
 import { AuthGuard } from './services/auth-guard.service';
 
+import { RlTagInputModule } from 'angular2-tag-input';
+//import { RlTagInputModule } from '../node_modules/angular2-tag-input/index';
+
 @NgModule({
-	imports:      [ BrowserModule, HttpModule, FormsModule, AppRoutingModule, JsonpModule ],
+	imports:      [ BrowserModule, HttpModule, FormsModule, AppRoutingModule, JsonpModule, RlTagInputModule ],
 	declarations: [ AppComponent, RoomsComponent, LoginComponent, RegisterComponent, HomeComponent, ProfileComponent, RoomComponent, RoomSuccessComponent, ChatComponent ],
 	providers:    [ RoomService, AuthService, AuthGuard, AccountResolver, RoomResolver ],
 	bootstrap:    [ AppComponent ]

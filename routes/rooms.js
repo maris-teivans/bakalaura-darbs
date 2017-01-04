@@ -48,8 +48,9 @@ router.post('/room', function(req, res, next){
 	room.title = req.body.title;
 	room.isPrivate = req.body.isPrivate;
 	room.ownerId = req.body.ownerId;
+	room.allowedIds = req.body.allowedIds;
 
-	if (!room.title || !(room.isPrivate + '')) {
+	if (!room.title || !(room.isPrivate + '') || (room.allowedIds.length == 0 && room.isPrivate == true)) {
 		res.status(400);
 		res.json({"error":"bad data"});
 	} else {
@@ -65,6 +66,7 @@ router.post('/room', function(req, res, next){
 //Delete task
 router.delete('/room/:id', function(req, res, next){
 	Room.remove({_id: req.params.id}, function(err, room){
+		console.log("Remove " + req.params.id);
 		if (err) {
 			res.send(err);
 		}

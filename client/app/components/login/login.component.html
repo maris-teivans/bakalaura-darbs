@@ -5,12 +5,8 @@
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" [(ngModel)]="localUser.password" name="localUser.password" id="inputPassword" class="form-control" placeholder="Parole" required>
     <p class="msg-error">{{errorMessage}}</p>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" value="remember-me"> Atcerēties mani
-        </label>
-    </div>
+    
     <button class="btn btn-lg btn-primary btn-block" (click)="login()">Ienākt</button>
     <div class="register-div"><a routerLink="/register" routerLinkActive="active">Reģistrēties</a></div>
-    <div class="forget-div"><a href="#">Aizmirsāt paroli?</a></div>
+    
 </form>

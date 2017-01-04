@@ -9,7 +9,7 @@
 					<h4>{{room.title}}</h4>
 				</div>
 				<div class="col-md-3">
-					<input [disabled]="room.isPrivate && room.ownerId !== user._id" type="button" name="enterRoom" class="btn btn-primary" (click)="enterRoom(room._id)" value="Pieslēgties istabai">
+					<input [disabled]="room.isPrivate && (room.ownerId !== user._id && room.allowedIds.indexOf(user._id) == -1)" type="button" name="enterRoom" class="btn btn-primary" (click)="enterRoom(room._id)" value="Pieslēgties istabai">
 				</div>
 				<div *ngIf="room.isPrivate" class="private-div col-md-3">
 					<b>Istaba ir privāta</b>

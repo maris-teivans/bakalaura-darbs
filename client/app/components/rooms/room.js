@@ -2,6 +2,7 @@
 var Room = (function () {
     function Room() {
         this.isPrivate = false;
+        this.allowedIds = [];
     }
     return Room;
 }());

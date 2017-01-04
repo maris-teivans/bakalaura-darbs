@@ -51,21 +51,18 @@ export class ProfileComponent implements OnInit {
         this.socket.emit('newUser', {'username': this.user.username, 'roomId': id});
     }
 
-	/*deleteRoom(id) {
-        var rooms = this.rooms;
-
+    deleteRoom(id) {
         this.roomService.deleteRoom(id).then((response:Response) => {
-            let data = response.json();
-
-            if (data.n == 1) {
-                for (var i = 0; i < rooms.length; i++) {
-                    if (rooms[i]._id == id) {
-                        rooms.splice(i, 1);
+            let res = response.json();
+            if (res) {
+                for (var i = 0; i < this.rooms.length; i++) {
+                    if (this.rooms[i]._id == id) {
+                        this.rooms.splice(i, 1);
                     }
                 }
             }
-        })    
-    }*/
+        });
+    }
 
     updateUsername() {
         if(this.user.username === this.oldUsername) {

@@ -30,8 +30,8 @@
 	margin-top: 6px;
 }
 
-.btn-h {
-
+.del_button {
+	background-color: red;
 }
 
 .btn-h:hover {

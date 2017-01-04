@@ -2,7 +2,7 @@ export class Room {
 	_id: string;
 	title: string;
 	isPrivate: boolean;
-	allowedIds: [string];
+	allowedIds: Array<string>;
 	userCount: number;
 	users: [string];
 	tags: [string];
@@ -11,6 +11,7 @@ export class Room {
 
 	constructor(){
 		this.isPrivate = false;
+		this.allowedIds = [];
 	}
 }
 
