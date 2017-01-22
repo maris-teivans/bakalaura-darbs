@@ -26,8 +26,16 @@ export class ProfileComponent implements OnInit {
     oldEmail: string;
     errName = '';
     errEmail = '';
+    errPassword = '';
     editName = false;
     editEmail = false;
+    editPassword = false;
+    password = {
+        old: '',
+        new: '',
+        newRep: ''
+    };
+    passCorrect = false;
     regUsers: User[];
 
 	constructor (private authService: AuthService, private roomService: RoomService, private router: Router, private route: ActivatedRoute) {}
@@ -122,6 +130,42 @@ export class ProfileComponent implements OnInit {
         }
     }
 
+    updatePassword() {
+        if(this.password.old == '') {
+            this.errPassword = 'Jānorāda esošā parole.';
+        } else {
+            this.errPassword = '';
+            this.authService.matchPassword(this.user.username, this.password.old)
+            .then((response: Response) => {
+                let res = response.json();
+                if(res.status === 200) {
+                    this.errPassword = '';
+                    if(this.password.new == '') {
+                        this.errPassword = 'Jānorāda jaunā parole.';
+                    } else if(this.password.newRep == '') {
+                        this.errPassword = 'Jānorāda jaunā parole atkārtoti.';
+                    } else if(this.password.new !== this.password.newRep) {
+                        this.errPassword = 'Atkārtotā parole nesakrīt ar ievadīto paroli.';
+                    } else {
+                        this.authService.savePassword(this.user.username, this.password.new)
+                            .then((response: Response) => {
+                                let res = response.json();
+                                if(res) {
+                                    alert('Parole veiksmīgi nomainīta, notiks lapas pārlāde.');
+                                    this.authService.logout().subscribe(
+                                        user => {
+                                            this.router.navigate(['/login']);
+                                        });
+                                }
+                        });
+                    }
+                } else {
+                    this.errPassword = 'Parole nav pareiza';
+                }
+            });
+        }    
+    }
+
     existsUsername(username): boolean {
         for (let i = this.regUsers.length - 1; i >= 0; i--) {
             if(this.regUsers[i].username === username) {
@@ -150,5 +194,12 @@ export class ProfileComponent implements OnInit {
         this.editEmail = false;
         this.errEmail = '';
         this.user.email = this.oldEmail;
+    }
+    cancelPasswordUpdate() {
+        this.editPassword = false;
+        this.errPassword = '';
+        this.password.old = '';
+        this.password.new = '';
+        this.password.newRep = '';
     }
 }

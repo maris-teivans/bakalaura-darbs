@@ -1,57 +1,70 @@
 .profile-content {
 	margin-top: 10%;
 }
-
 .task-list-item {
-	padding-top: 6px;
 	cursor: pointer;
 }
-
 .task-list-item:hover {
-	/*background-color: #f5f5f5;*/
 	background-color: #E0EEE0;
 }
-
 .container {
 	font-family: inherit;
 }
-
 .field-label {
 	font-family: inherit;
 	font-size: 18px;
 	font-weight: bold;
 }
-
 .vert-centr-1 {
 	margin-top: 4px;
 }
-
 .vert-centr {
 	margin-top: 6px;
 }
-
 .del_button {
 	background-color: red;
 }
-
 .btn-h:hover {
 	background-color: #E0EEE0;
 }
-
 .task-checkbox {
 	cursor: pointer;
 }
-
 .btn {
 	border-radius: 0px;
 }
-
-.private-div {
-	margin-top: 6px;
-	border: 1px solid grey;
-	width: 13%;
-}
-
 .msg-error {
 	color: red;
+}
+.item-private {
+	width: 15%;
+	text-align: center;
+}
+.item-enter {
+	width: 15%;
+}
+.item-delete {
+	width: 7%;
+}
+.item-title {
+	width: 63%;
+}
+.item-dt {
+	padding: 7px;
+}
+.task-list-table {
+	width: 100%;
+}
+.private-div {
+	border: 1px solid grey;
+}
+.username-class {
+	margin-bottom: 5px; 
+}
+.email-class {
+	margin-bottom: 5px; 
+}
+.pass-marigin {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }

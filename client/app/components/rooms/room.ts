@@ -17,7 +17,9 @@ export class Room {
 
 class Feed {
 	text: string;
-	username: string;
+	userName: string;
 	userid: string;
 	date: Date;
+	roomId: string;
+	usrN: string;
 }

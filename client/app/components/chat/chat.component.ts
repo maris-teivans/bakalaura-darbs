@@ -37,14 +37,19 @@ export class ChatComponent implements OnInit, OnDestroy {
 				let res = response.json();
 				if(res) {
 					this.room = res;
+					this.conversation = res.feed;
+					console.log(res.feed);
 				}
-			})
+			});
 		}
 
 		this.socket = io('http://localhost:8000');
         this.socket.on('chatUpdate', function(data) {
             if(data.roomId === this.room._id) {
             	this.conversation.push(data);
+				console.log(this.conversation);
+				this.room.feed = this.conversation;
+				this.roomService.updateRoom(this.room).then((response: Response) => {});
             	if(this.isNewUserAlert(data)) {
             		if(this.userList.indexOf(data.usrN) === -1) {
             			this.userList.push(data.usrN);

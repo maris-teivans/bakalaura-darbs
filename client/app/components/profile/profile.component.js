@@ -22,8 +22,16 @@ var ProfileComponent = (function () {
         this.socket = null;
         this.errName = '';
         this.errEmail = '';
+        this.errPassword = '';
         this.editName = false;
         this.editEmail = false;
+        this.editPassword = false;
+        this.password = {
+            old: '',
+            new: '',
+            newRep: ''
+        };
+        this.passCorrect = false;
     }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -118,6 +126,46 @@ var ProfileComponent = (function () {
             });
         }
     };
+    ProfileComponent.prototype.updatePassword = function () {
+        var _this = this;
+        if (this.password.old == '') {
+            this.errPassword = 'Jānorāda esošā parole.';
+        }
+        else {
+            this.errPassword = '';
+            this.authService.matchPassword(this.user.username, this.password.old)
+                .then(function (response) {
+                var res = response.json();
+                if (res.status === 200) {
+                    _this.errPassword = '';
+                    if (_this.password.new == '') {
+                        _this.errPassword = 'Jānorāda jaunā parole.';
+                    }
+                    else if (_this.password.newRep == '') {
+                        _this.errPassword = 'Jānorāda jaunā parole atkārtoti.';
+                    }
+                    else if (_this.password.new !== _this.password.newRep) {
+                        _this.errPassword = 'Atkārtotā parole nesakrīt ar ievadīto paroli.';
+                    }
+                    else {
+                        _this.authService.savePassword(_this.user.username, _this.password.new)
+                            .then(function (response) {
+                            var res = response.json();
+                            if (res) {
+                                alert('Parole veiksmīgi nomainīta, notiks lapas pārlāde.');
+                                _this.authService.logout().subscribe(function (user) {
+                                    _this.router.navigate(['/login']);
+                                });
+                            }
+                        });
+                    }
+                }
+                else {
+                    _this.errPassword = 'Parole nav pareiza';
+                }
+            });
+        }
+    };
     ProfileComponent.prototype.existsUsername = function (username) {
         for (var i = this.regUsers.length - 1; i >= 0; i--) {
             if (this.regUsers[i].username === username) {
@@ -143,6 +191,13 @@ var ProfileComponent = (function () {
         this.editEmail = false;
         this.errEmail = '';
         this.user.email = this.oldEmail;
+    };
+    ProfileComponent.prototype.cancelPasswordUpdate = function () {
+        this.editPassword = false;
+        this.errPassword = '';
+        this.password.old = '';
+        this.password.new = '';
+        this.password.newRep = '';
     };
     ProfileComponent = __decorate([
         core_1.Component({

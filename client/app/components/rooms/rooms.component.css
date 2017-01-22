@@ -1,27 +1,34 @@
-.task-list-item {
-	padding-top: 6px;
-	cursor: pointer;
-}
-
-.task-list-item:hover {
-	/*background-color: #f5f5f5;*/
-	background-color: #E0EEE0;
-}
-
-.task-checkbox {
-	cursor: pointer;
-}
-
 .room-content {
 	margin-top: 10%;
 }
-
+.task-list-item {
+	cursor: pointer;
+}
+.task-list-item:hover {
+	background-color: #E0EEE0;
+}
+.task-checkbox {
+	cursor: pointer;
+}
 .btn {
 	border-radius: 0px;
 }
-
+.item-private {
+	width: 15%;
+	text-align: center;
+}
+.item-enter {
+	width: 15%;
+}
+.item-title {
+	width: 70%;
+}
+.item-dt {
+	padding: 7px;
+}
+.task-list-table {
+	width: 100%;
+}
 .private-div {
-	margin-top: 6px;
 	border: 1px solid grey;
-	width: 14%;
 }

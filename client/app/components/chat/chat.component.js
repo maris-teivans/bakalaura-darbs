@@ -36,6 +36,8 @@ var ChatComponent = (function () {
                 var res = response.json();
                 if (res) {
                     _this.room = res;
+                    _this.conversation = res.feed;
+                    console.log(res.feed);
                 }
             });
         }
@@ -43,6 +45,9 @@ var ChatComponent = (function () {
         this.socket.on('chatUpdate', function (data) {
             if (data.roomId === this.room._id) {
                 this.conversation.push(data);
+                console.log(this.conversation);
+                this.room.feed = this.conversation;
+                this.roomService.updateRoom(this.room).then(function (response) { });
                 if (this.isNewUserAlert(data)) {
                     if (this.userList.indexOf(data.usrN) === -1) {
                         this.userList.push(data.usrN);

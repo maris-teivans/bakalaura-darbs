@@ -5,7 +5,7 @@
   <div class="room-form">
     <form (submit)="saveRoom($event)">
       <div class="form-group">
-        <label for="roomTitle">Istabas nosaukums</label>
+        <label for="roomTitle">Istabas nosaukums:</label>
         <input type="text" [(ngModel)]="room.title" name="room.title" class="form-control" id="roomTitle" aria-describedby="titleHelp" placeholder="Ievadiet nosaukumu">
         <small id="titleHelp" class="form-text text-muted">Ievadiet istabas nosaukumu, kas raksturos saturu, par ko šajā istabā lietotāji runās.</small>
       </div>
@@ -18,7 +18,7 @@
       </div>
       <div *ngIf="room.isPrivate">
         <div class="form-group">
-          <label for="userTags">Lietotāji, kas var piekļūt šai istabai</label>
+          <label for="userTags">Lietotāji, kas var piekļūt šai istabai:</label>
           <rl-tag-input [(ngModel)]="tags" name="tags" id="userTags" placeholder="Ievadiet lietotāja vārdu" class="border"></rl-tag-input>
           <small id="titleHelp" class="form-text text-muted">Ievadiet lietotāja vārdu un spiediet klaviatūras taustiņu "Enter", lai ieliktu lietotāju sarakstā.</small>
         </div>

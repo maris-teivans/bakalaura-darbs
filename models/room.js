@@ -4,8 +4,10 @@ var Schema = mongoose.Schema;
 
 var feedSchema = new Schema({
 	text: String,
-	username: String,
+	userName: String,
 	userid: String,
+	roomId: String,
+	usrN: String,
 	date: {
 		type: Date,
 		default: Date.now

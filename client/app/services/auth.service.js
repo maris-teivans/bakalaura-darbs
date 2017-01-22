@@ -73,6 +73,14 @@ var AuthService = (function () {
     AuthService.prototype.updateUser = function (user) {
         return this.http.put('/api/user/' + user._id, user).toPromise();
     };
+    AuthService.prototype.matchPassword = function (username, password) {
+        return this.http.post('/api/password', { username: username, password: password })
+            .toPromise();
+    };
+    AuthService.prototype.savePassword = function (username, password) {
+        return this.http.post('/api/setPassword', { username: username, password: password })
+            .toPromise();
+    };
     AuthService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

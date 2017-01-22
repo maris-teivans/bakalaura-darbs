@@ -19,6 +19,43 @@ router.post('/register', function(req, res) {
   });
 });
 
+router.post('/password', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    //if (err) {
+    //  return next(err);
+    //}
+    if (!user) {
+      return res.status(200).json({
+        message: 'Parole nepareiza!',
+        status: 401
+      });
+    } else {
+      return res.status(200).json({
+        message: 'Parole pareiza!',
+        status: 200
+      });
+    }
+  })(req, res, next);
+});
+
+router.post('/setPassword', function(req, res) {
+  Account.findByUsername(req.body.username, function(err, account) {
+    if (err) {
+      return res.status(500).json({
+        err: err
+      });
+    }
+    if(account){
+      account.setPassword(req.body.password, function(){
+        account.save();
+        res.status(200).json({message: 'password reset successful'});
+      });
+    } else {
+      res.status(500).json({message: 'This user does not exist'});
+    }    
+  });
+});
+
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {

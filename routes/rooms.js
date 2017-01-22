@@ -74,7 +74,7 @@ router.delete('/room/:id', function(req, res, next){
 	});
 });
 
-//Update task
+//Update room
 router.put('/room/:id', function(req, res, next){
 	//var oldTask = req.body;
 	var updRoom = {};
@@ -85,6 +85,10 @@ router.put('/room/:id', function(req, res, next){
 
 	if (req.body.title) {
 		updRoom.title = req.body.title;
+	}
+
+	if (req.body.feed) {
+		updRoom.feed = req.body.feed;
 	}
 
 	if (!updRoom) {

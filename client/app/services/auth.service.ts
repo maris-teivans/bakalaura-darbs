@@ -75,4 +75,14 @@ export class AuthService {
 	updateUser(user): Promise<Response> {
 		return this.http.put('/api/user/' + user._id, user).toPromise();
 	}
+
+	matchPassword(username, password): Promise<Response> {
+		return this.http.post('/api/password', {username: username, password: password})
+			.toPromise();
+	}
+
+	savePassword(username, password): Promise<Response> {
+		return this.http.post('/api/setPassword', {username: username, password: password})
+			.toPromise();
+	}
 }

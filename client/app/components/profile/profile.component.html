@@ -4,8 +4,8 @@
 		
 	<div class="container">
 		<div class="col-md-2 vert-centr-1"><span class="field-label">Lietotājvārds: </span></div>
-		<div *ngIf="!editName" class="col-md-3 vert-centr">{{user.username}}</div>
-		<div *ngIf="editName" class="col-md-3 vert-centr"><input type="text" [(ngModel)]="user.username" name="user.username"/></div>		
+		<div *ngIf="!editName" class="col-md-3 vert-centr username-class">{{user.username}}</div>
+		<div *ngIf="editName" class="col-md-3 vert-centr username-class"><input type="text" [(ngModel)]="user.username" name="user.username"/></div>		
 		<div class="col-md-7">
 			<div *ngIf="!editName"><button class="btn btn-h" (click)="editName = true">Redīģēt</button></div>
 			<div *ngIf="editName"><button class="btn btn-h" (click)="updateUsername()">Saglabāt</button> <button class="btn btn-h" (click)="cancelNameUpdate()">Atcelt</button></div>
@@ -13,39 +13,46 @@
 		<p class="msg-error">{{errName}}</p>
 
 		<div class="col-md-2 vert-centr-1"><span class="field-label">E-pasts: </span></div>
-		<div *ngIf="!editEmail" class="col-md-3 vert-centr">{{user.email}}</div>
-		<div *ngIf="editEmail" class="col-md-3 vert-centr"><input type="text" [(ngModel)]="user.email" name="user.email"/></div>
+		<div *ngIf="!editEmail" class="col-md-3 vert-centr email-class">{{user.email}}</div>
+		<div *ngIf="editEmail" class="col-md-3 vert-centr email-class"><input type="text" [(ngModel)]="user.email" name="user.email"/></div>
 		<div class="col-md-7">
 			<div *ngIf="!editEmail"><button class="btn btn-h" (click)="editEmail = true">Redīģēt</button></div>
 			<div *ngIf="editEmail"><button class="btn btn-h" (click)="updateEmail()">Saglabāt</button> <button class="btn btn-h" (click)="cancelEmailUpdate()">Atcelt</button></div>
 		</div><br><br>
 		<p class="msg-error">{{errEmail}}</p>
 
-		<div class="col-md-2"><button class="btn btn-h">Mainīt paroli</button></div>
+		<div *ngIf="!editPassword" class="col-md-2"><button class="btn btn-h" (click)="editPassword = true">Mainīt paroli</button></div>
+		<div *ngIf="editPassword" class="col-md-2">
+			<div class="pass-marigin"><input type="password" [(ngModel)]="password.old" name="password.old" placeholder="Ievadiet esošo paroli..."/></div>
+			<div class="pass-marigin"><input type="password" [(ngModel)]="password.new" name="password.new" placeholder="Ievadiet jauno paroli..."/></div>
+			<div class="pass-marigin"><input type="password" [(ngModel)]="password.newRep" name="password.newRep" placeholder="Atkārtojiet jauno paroli..."/></div>
+			<p class="msg-error">{{errPassword}}</p>
+			<div class="pass-marigin"><button class="btn btn-h" (click)="updatePassword()">Saglabāt</button> <button class="btn btn-h" (click)="cancelPasswordUpdate()">Atcelt</button></div>
+		</div>
 	</div>
 	<br><br>
 	
 	<h1>Lietotāja izveidoto istabu saraksts</h1>
 	<hr>
-
-	<div class="task-list">
-		<div *ngIf="rooms">
-			<div *ngFor="let room of rooms" class="task-list-item">
-				<div class="col-md-6">
+	
+	<div *ngIf="rooms">
+		<table class="task-list-table">
+			<tr *ngFor="let room of rooms" class="task-list-item">
+				<td class="item-title item-dt">
 					<h4>{{room.title}}</h4>
-				</div>
-				<div class="col-md-2">
+				</td>
+				<td class="item-enter item-dt">
 					<input type="button" name="enterRoom" class="btn btn-primary" (click)="enterRoom(room._id)" value="Pieslēgties istabai">
-				</div>
-				<div class="col-md-2">
+				</td>
+				<td class="item-delete item-dt">
 					<input type="button" name="deleteRoom" class="btn btn-danger" (click)="deleteRoom(room._id)" value="Dzēst">
-				</div>
-				<div *ngIf="room.isPrivate" class="private-div col-md-2">
-					<b>Istaba ir privāta</b>
-				</div>
-				<br><br>
-			</div>
-		</div>
-		<div *ngIf="!rooms">Iegūst sarakstu...</div>
+				</td>
+				<td *ngIf="room.isPrivate" class="item-private item-dt">
+					<div class="private-div"><b>Istaba ir privāta</b></div>
+				</td>
+				<td *ngIf="!room.isPrivate"></td>
+			</tr>
+		</table>
 	</div>
+	<div *ngIf="!rooms">Iegūst sarakstu...</div>	
 </div>
